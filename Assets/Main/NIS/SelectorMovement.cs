@@ -29,12 +29,12 @@ public partial class @SelectorMovement: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""b20c2038-d259-424d-bcb7-f31ccebb9d7e"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": ""NormalizeVector2"",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Hold(duration=0.8),Press"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [

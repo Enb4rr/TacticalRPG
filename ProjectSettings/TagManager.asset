@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Base
+    uniqueID: 2492273669
+    locked: 0
+  - name: No Walkable Land
+    uniqueID: 286073089
+    locked: 0
+  - name: Land
+    uniqueID: 2297941643
+    locked: 0
+  - name: Custom Terrain
+    uniqueID: 925517065
+    locked: 0
+  - name: No Walkable Terrain
+    uniqueID: 2107090493
+    locked: 0
+  - name: Selector
+    uniqueID: 1167085885
+    locked: 0
