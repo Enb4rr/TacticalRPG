@@ -10,8 +10,8 @@
                     "type": "PassThrough",
                     "id": "b20c2038-d259-424d-bcb7-f31ccebb9d7e",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
+                    "processors": "NormalizeVector2",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
