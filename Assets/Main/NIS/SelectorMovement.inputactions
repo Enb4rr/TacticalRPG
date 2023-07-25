@@ -7,12 +7,12 @@
             "actions": [
                 {
                     "name": "Movement",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "b20c2038-d259-424d-bcb7-f31ccebb9d7e",
                     "expectedControlType": "Vector2",
                     "processors": "NormalizeVector2",
-                    "interactions": "Hold(duration=0.8),Press",
-                    "initialStateCheck": true
+                    "interactions": "Hold(duration=0.6)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [

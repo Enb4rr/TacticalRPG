@@ -59,3 +59,6 @@ TagManager:
   - name: Selector
     uniqueID: 1167085885
     locked: 0
+  - name: Confiner
+    uniqueID: 2866570775
+    locked: 0

@@ -5,12 +5,16 @@ using DG.Tweening;
 using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using Unity.VisualScripting.InputSystem;
 
 public class SelectorInputMovement : MonoBehaviour
 {
     [SerializeField] private Tilemap walkableTilemap;
+    [SerializeField] private float waitTime;
 
     private SelectorMovement selectorMovementControls;
+    private bool isWithInput;
+    private bool isMoving;
 
     private void Awake()
     {
@@ -31,36 +35,32 @@ public class SelectorInputMovement : MonoBehaviour
     {
         if (selectorMovementControls != null)
         {
-            selectorMovementControls.Main.Movement.performed += ctx =>
+            selectorMovementControls.Main.Movement.started += ctx =>
             {
-                if (ctx.interaction is HoldInteraction) MoveWhenHold(ctx.ReadValue<Vector2>());
-                else if (ctx.interaction is PressInteraction) Move(ctx.ReadValue<Vector2>());
+                isWithInput = true;
+                if(!isMoving) StartCoroutine(Move(ctx));
             };
 
             selectorMovementControls.Main.Movement.canceled += ctx =>
             {
-                if (ctx.interaction is HoldInteraction) Move(ctx.ReadValue<Vector2>());
+                isWithInput = false;
             };
         }
     }
 
-    private void Move(Vector2 direction)
+    private IEnumerator Move(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("moving while free");
-        Debug.Log("This is my direction" + direction);
-        if (CanMove(direction))
+        while (isWithInput)
         {
-            transform.position += (Vector3)direction;
-        }
-    }
+            isMoving = true;
+            var direction = callbackContext.ReadValue<Vector2>();
+            if (CanMove(direction))
+            {
+                transform.position += (Vector3)direction;
+            }
 
-    private void MoveWhenHold(Vector2 direction)
-    {
-        Debug.Log("moving while holding");
-        Debug.Log("This is my direction" + direction);
-        if (CanMove(direction))
-        {
-            transform.position += (Vector3)direction;
+            yield return new WaitForSeconds(waitTime);
+            isMoving = false;
         }
     }
 
